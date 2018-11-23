@@ -1,1 +1,5 @@
-../../../../spacemacs/home/.config/omf/bundle
+package foreign-env
+package keychain
+package nvm
+theme bobthefish
+theme default
