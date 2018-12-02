@@ -1,5 +1,6 @@
 package foreign-env
 package keychain
 package nvm
+package rbenv
 theme bobthefish
 theme default
