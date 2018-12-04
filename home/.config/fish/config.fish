@@ -1,8 +1,14 @@
-# setup racket path
-set PATH $HOME/build/racket-7.1.0.2/bin $PATH
+# configuration based on system architecture
+switch (uname -m)
+case armv7l # raspberry pi
+    #setup racket
+    set PATH $HOME/build/racket-7.1.0.2/bin $PATH
+end
 
-# setup rbenv path
-set PATH $HOME/.rbenv/bin $PATH
+# configuration based on distribution
+switch (uname)
+case Linux
+end
 
 # use nerd font themeing
 set -g theme_nerd_fonts yes
