@@ -20,6 +20,11 @@ set -U keychain_init_args --quiet --agents ssh,gpg id_rsa 0xBC76F379DB7CE625
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
 
+if test -e ~/.config/fish/secrets.fish
+    source ~/.config/fish/secrets.fish
+end
+
+
 # aliases
 alias emacs="emacsclient --tty --create-frame"
 alias vim="nvim"
