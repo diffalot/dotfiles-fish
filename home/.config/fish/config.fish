@@ -8,6 +8,9 @@ end
 # configuration based on distribution
 switch (uname)
 case Linux
+    # setup rbenv
+    set -Ux fish_user_paths $HOME/.rbenv/bin $fish_user_paths
+    status --is-interactive; and source (rbenv init -|psub)
 end
 
 # use nerd font themeing
