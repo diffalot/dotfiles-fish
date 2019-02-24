@@ -45,7 +45,12 @@ set -U default_npm_packages \
     eslint-plugin-promise \
     eslint-plugin-import \
     eslint-plugin-node \
-    neovim
+    eslint-plugin-vue \
+    neovim \
+    yo \
+    generator-generator \
+    @vue/cli \
+    @vue/cli-service-global
 
 
 function toolchain-node
