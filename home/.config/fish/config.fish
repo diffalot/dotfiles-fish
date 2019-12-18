@@ -31,17 +31,38 @@ end
 set -Ux EDITOR nvim
 
 # aliases
-alias emacs="emacsclient --tty --create-frame"
+#alias emacs="emacsclient --tty --create-frame"
 alias vim="nvim"
 alias wip="git commit -a -m wip"
 alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias oneline="git log --oneline master..."
 
+# Android SDK
+set ANT_HOME /usr/local/opt/ant
+set MAVEN_HOME /usr/local/opt/maven
+set GRADLE_HOME /usr/local/opt/gradle
+set ANDROID_HOME /usr/local/share/android-sdk
+set ANDROID_NDK_HOME /usr/local/share/android-ndk
+set INTEL_HAXM_HOME /usr/local/Caskroom/intel-haxm
+#set ANDROID_SDK_ROOT  /usr/local/Caskroom/android-sdk/4333796
+#set ANDROID_SDK_ROOT  $ANDROID_HOME
+#set ANDROID_AVD_HOME $HOME/.android/avd
+
+set PATH $ANT_HOME/bin $PATH
+set PATH $MAVEN_HOME/bin $PATH
+set PATH $GRADLE_HOME/bin $PATH
+set PATH $ANDROID_HOME/tools $PATH
+set PATH $ANDROID_HOME/platform-tools $PATH
+set PATH $ANDROID_HOME/build-tools/19.1.0 $PATH
+
+alias android-emulator "echo \"not set up\""
+
 # Medium environment
 if test -e /opt/medium/env
     bass source /opt/medium/env
     set -Ux ALLOW_NO_REVIEWERS 1
+    ssh-add -K ~/.ssh/medium_rsa.pem
 end
 
 # spark path
@@ -60,6 +81,7 @@ set -U default_npm_packages \
     tern \
     flow-bin \
     jest \
+    typescript \
     js-beautify \
     eslint \
     eslint-config-standard \
@@ -74,6 +96,7 @@ set -U default_npm_packages \
     generator-generator \
     @vue/cli \
     @vue/cli-service-global \
+    npmrc \
     @ceejbot/tarot
 
 
@@ -87,9 +110,9 @@ set -U patronus_servers \
     medium2
 
 function patronus
-    cd ~/code/mono/lite
+    cd ~/code/mono/ts/lite
     yarn auth
     for server in $patronus_servers
-        tmux split-window -p 90 "yarn dev $server; or fish"
+        tmux split-window -t 2 -p 90 "yarn dev $server; or fish"
     end
 end
