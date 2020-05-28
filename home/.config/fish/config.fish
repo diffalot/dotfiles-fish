@@ -1,8 +1,6 @@
 # configuration based on system architecture
 switch (uname -m)
 case armv7l # raspberry pi
-    #setup racket
-    set PATH $HOME/build/racket-7.1.0.2/bin $PATH
 end
 
 # configuration based on distribution
@@ -69,6 +67,10 @@ end
 if test -e /usr/local/spark/bin
     set PATH /usr/local/spark/bin $PATH
 end
+
+# add ~/bin to path
+set PATH ~/bin $PATH
+alias sicp-racket-repl "racket -i -p neil/sicp -l xrepl"
 
 # toolchain
 set -U default_npm_packages \
