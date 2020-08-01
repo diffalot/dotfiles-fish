@@ -68,6 +68,9 @@ if test -e /usr/local/spark/bin
     set PATH /usr/local/spark/bin $PATH
 end
 
+# add CPAN modules to path
+set PATH ~/perl5/bin $PATH
+
 # add ~/bin to path
 set PATH ~/bin $PATH
 alias sicp-racket-repl "racket -i -p neil/sicp -l xrepl"
