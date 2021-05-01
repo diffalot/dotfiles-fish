@@ -10,11 +10,15 @@ end
 # Fundle, a bundler for fish
 
 # colorschemes
-#fundle plugin 'smh/base16-shell-fish'
+fundle plugin 'smh/base16-shell-fish'
 
 # Prompts
-fundle plugin 'pure-fish/pure'
+#fundle plugin 'matchai/spacefish'
+#set -U SPACEFISH_PROMPT_ORDER git venv rust jobs
+#set -U SPACEFISH_RPROMPT_ORDER git venv rust jobs
+
 #fundle plugin 'oh-my-fish/theme-edan'
+fundle plugin 'pure-fish/pure'
 #fundle plugin 'jorgebucaran/hydro'
 #fundle plugin 'oh-my-fish/theme-scorphish'
 #fundle plugin 'hauleth/agnoster'
@@ -39,9 +43,9 @@ fundle plugin 'laughedelic/pisces'
 #fundle plugin 'jorgebucaran/autopair.fish'
 
 # environment managers
-#fundle plugin 'FabioAntunes/fish-nvm'
-#fundle plugin 'oh-my-fish/plugin-pyenv'
-#fundle plugin 'oh-my-fish/plugin-rustup'
+fundle plugin 'FabioAntunes/fish-nvm'
+fundle plugin 'oh-my-fish/plugin-pyenv'
+fundle plugin 'oh-my-fish/plugin-rustup'
 #fundle plugin 'oh-my-fish/plugin-rbenv'
 
 # OS specific aliases, etc.
@@ -49,23 +53,19 @@ fundle plugin 'laughedelic/pisces'
 #fundle plugin 'oh-my-fish/plugin-archlinux'
 
 # Utilities that aren't for everyone
-#fundle plugin 'vincentjames501/fish-kill-on-port'
+fundle plugin 'vincentjames501/fish-kill-on-port'
 #fundle plugin 'oh-my-fish/plugin-aws'
 #fundle plugin 'tuvistavie/fish-watson'
 
 fundle init
 
-# use nerd font themeing
-set -g theme_nerd_fonts yes
-
-# homeshick dotfile management
-source "$HOME/.homesick/repos/homeshick/homeshick.fish"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
+# add .bin to path
+set -U fish_user_paths $fish_user_paths $HOME/bin
 
 # set EDITOR environment variable
-# alias vim="nvim"
+alias vim="nvim"
 # alias emacs="emacsclient --tty --create-frame"
-set -Ux EDITOR vim
+set -U EDITOR nvim
 
 # git convenience aliases
 alias wip="git commit -a -m wip"
@@ -73,17 +73,9 @@ alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD |
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias oneline="git log --oneline master..."
 
-# nodejs familiar toolchain
-set -U default_npm_packages \
-    yarn \
-    snowpack \
-    http-server \
-    parcel \
-    onchange \
-    lerna \
-    npmrc \
-    @ceejbot/tarot
+# use nerd font themeing
+set -g theme_nerd_fonts yes
 
-function toolchain-node
-    npm i -g $default_npm_packages
-end
+# homeshick dotfile management
+source "$HOME/.homesick/repos/homeshick/homeshick.fish"
+source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
