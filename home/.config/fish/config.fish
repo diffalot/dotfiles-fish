@@ -17,6 +17,14 @@ set -g theme_nerd_fonts yes
 # setup ssh-agent
 set -U keychain_init_args --quiet --agents ssh,gpg id_rsa 0xBC76F379DB7CE625
 
+# fish shell autovenv for python
+#set -U autovenv_enable yes
+#set -U autovenv_announce yes
+
+# this is a pipenv house now
+set pipenv_fish_fancy yes
+set -U fish_user_paths ~/.pyenv/shims $fish_user_paths
+
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
@@ -29,12 +37,19 @@ end
 set -Ux EDITOR nvim
 
 # aliases
+
+# editors
 #alias emacs="emacsclient --tty --create-frame"
 alias vim="nvim"
+
+# git shortcuts
 alias wip="git commit -a -m wip"
-alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
+alias amend="git commit --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias oneline="git log --oneline master..."
+
+# TODO: `print` uses prism-cli to highlight code 
+#alias print="echo $0; cat $0 | prism -l js" 
 
 # Android SDK
 set ANT_HOME /usr/local/opt/ant
@@ -54,23 +69,6 @@ set PATH $ANDROID_HOME/tools $PATH
 set PATH $ANDROID_HOME/platform-tools $PATH
 set PATH $ANDROID_HOME/build-tools/19.1.0 $PATH
 
-alias android-emulator "echo \"not set up\""
-
-# Medium environment
-if test -e /opt/medium/env
-    bass source /opt/medium/env
-    set -Ux ALLOW_NO_REVIEWERS 1
-    ssh-add -K ~/.ssh/medium_rsa.pem
-end
-
-# spark path
-if test -e /usr/local/spark/bin
-    set PATH /usr/local/spark/bin $PATH
-end
-
-# add CPAN modules to path
-set PATH ~/perl5/bin $PATH
-
 # add ~/bin to path
 set PATH ~/bin $PATH
 alias sicp-racket-repl "racket -i -p neil/sicp -l xrepl"
@@ -80,14 +78,12 @@ set -U default_npm_packages \
     http-server \
     browser-sync \
     parcel \
-    nodemon \
+    snowpack \
+    gatsby \
     onchange \
     lerna \
-    tern \
-    flow-bin \
-    jest \
-    typescript \
-    js-beautify \
+    # TODO prism-cli \
+	tern \
     eslint \
     eslint-config-standard \
     eslint-plugin-standard \
@@ -97,11 +93,8 @@ set -U default_npm_packages \
     eslint-plugin-vue \
     eslint-plugin-mocha \
     neovim \
-    yo \
-    generator-generator \
     @vue/cli \
     @vue/cli-service-global \
-    npmrc \
     @ceejbot/tarot
 
 
@@ -109,15 +102,10 @@ function toolchain-node
     npm i -g $default_npm_packages
 end
 
-set -U patronus_servers \
-    lite \
-    rito \
-    medium2
+# Build things with real openssl
+set -x LDFLAGS  -L/usr/local/opt/openssl/lib
+set -x CPPFLAGS -I/usr/local/opt/openssl/include
+set -x PKG_CONFIG_PATH /usr/local/opt/openssl/lib/pkgconfig
 
-function patronus
-    cd ~/code/mono/ts/lite
-    yarn auth
-    for server in $patronus_servers
-        tmux split-window -t 2 -p 90 "yarn dev $server; or fish"
-    end
-end
+# Anaconda Jupyter
+set -x PATH /usr/local/anaconda3/bin $PATH
