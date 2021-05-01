@@ -1,8 +1,0 @@
-package config
-package foreign-env
-package keychain
-package nvm
-package rbenv
-package tmux-zen
-theme bobthefish
-theme default
