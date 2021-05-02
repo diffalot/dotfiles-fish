@@ -50,7 +50,10 @@ fundle plugin 'vincentjames501/fish-kill-on-port'
 fundle init
 
 # add .bin to path
-set -U fish_user_paths $fish_user_paths $HOME/bin
+if contains $fish_user_paths $HOME/bin
+else
+	set -U fish_user_paths $fish_user_paths $HOME/bin
+end
 
 # set EDITOR environment variable
 alias vim="nvim"
