@@ -8,11 +8,17 @@ fundle plugin 'smh/base16-shell-fish'
 #set -U SPACEFISH_PROMPT_ORDER git venv rust jobs
 #set -U SPACEFISH_RPROMPT_ORDER git venv rust jobs
 
-#fundle plugin 'oh-my-fish/theme-edan'
-#fundle plugin 'pure-fish/pure'
-fundle plugin 'jorgebucaran/hydro'
-#fundle plugin 'oh-my-fish/theme-scorphish'
-#fundle plugin 'hauleth/agnoster'
+# fundle plugin 'jorgebucaran/hydro'
+# fundle plugin 'h-matsuo/fish-theme-productive'
+# fundle plugin 'rodrigobdz/mooji'
+# fundle plugin 'oh-my-fish/theme-bobthefish'
+# fundle plugin 'metrofish/metrofish'
+fundle plugin 'pure-fish/pure'
+# fundle plugin 'oh-my-fish/theme-edan'
+# fundle plugin 'oh-my-fish/theme-scorphish'
+# fundle plugin 'hauleth/agnoster'
+# fundle plugin 'AdamChristiansen/vertical-fish'
+# fundle plugin 'jorgebucaran/gitio.fish'
 
 # utilities other scripts depend on
 fundle plugin 'tuvistavie/fish-completion-helpers'
@@ -22,15 +28,15 @@ fundle plugin 'jorgebucaran/replay.fish'
 fundle plugin 'oh-my-fish/plugin-foreign-env'
 fundle plugin 'edc/bass'
 
-# ssh agent (keychain can do ssh and gpg)
-fundle plugin 'jitakirin/pkg-keychain'
-set -U keychain_init_args --quiet --agents ssh id_rsa
+fundle plugin 'danhper/fish-ssh-agent'
+#fundle plugin 'jitakirin/pkg-keychain'
+#set -U keychain_init_args --quiet --agents ssh id_rsa
 
 # efficiency tools
 fundle plugin 'patrickf3139/Colored-Man-Pages'
-fundle plugin 'tuvistavie/fish-fastdir'
-fundle plugin 'laughedelic/pisces'
-#fundle plugin 'jorgebucaran/autopair.fish'
+#fundle plugin 'tuvistavie/fish-fastdir'
+#fundle plugin 'laughedelic/pisces'
+fundle plugin 'jorgebucaran/autopair.fish'
 
 # environment managers
 fundle plugin 'FabioAntunes/fish-nvm'
@@ -39,13 +45,19 @@ fundle plugin 'oh-my-fish/plugin-rustup'
 #fundle plugin 'oh-my-fish/plugin-rbenv'
 
 # OS specific aliases, etc.
-#fundle plugin 'oh-my-fish/plugin-osx'
-#fundle plugin 'oh-my-fish/plugin-archlinux'
+# fundle plugin 'oh-my-fish/plugin-osx'
+# fundle plugin 'oh-my-fish/plugin-archlinux'
 
 # Utilities that aren't for everyone
-fundle plugin 'vincentjames501/fish-kill-on-port'
+
+fundle plugin 'gazorby/fish-abbreviation-tips'
+#fundle plugin 'vincentjames501/fish-kill-on-port'
 #fundle plugin 'oh-my-fish/plugin-aws'
 #fundle plugin 'tuvistavie/fish-watson'
+fundle plugin 'gazorby/fish-abbreviation-tips'
+#fundle plugin 'laughedelic/brew-completions'
+fundle plugin 'halostatue/fish-docker'
+fundle plugin 'decors/fish-source-highlight'
 
 fundle init
 
@@ -58,7 +70,7 @@ end
 # set EDITOR environment variable
 alias vim="nvim"
 # alias emacs="emacsclient --tty --create-frame"
-set -U EDITOR nvim
+set -U EDITOR vim
 
 # git convenience aliases
 alias wip="git commit -a -m wip"
@@ -83,16 +95,16 @@ case Linux
 end
 
 # Session command will join or start the default session or a supplied argument 
-set -U default_session_name 💃
-alias join-session "tmux new-session -A -s $default_session_name"
-function session -a session_name -d "Join or start a tmux session, defaults to the $default_session_name"
-	echo "you entered $session_name"
-	if test count $argv == 1
-		echo "Hello $argv"
-		#set session_name = $argv
-	else
-		set session_name = "main"
-	end
-	echo "launching $session_name"
-	tmux new-session -A -s $session_name
-end
+
+alias join-session "tmux new-session -A -s 0"
+
+#function session -a session_name -d "Join or start a tmux session, defaults to the $default_session_name"
+#	if test count $argv == 1
+#		echo "Hello $argv"
+#		#set session_name = $argv
+#	else
+#		set session_name = "main"
+#	end
+#	echo "launching $session_name"
+#	tmux new-session -A -s $session_name
+#end
