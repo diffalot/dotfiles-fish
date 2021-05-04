@@ -27,7 +27,7 @@ fundle plugin 'tuvistavie/oh-my-fish-core'
 # bash script and environment compatability wrappers. AFAIK these all let you
 # `replay source <file>` and `replay export VAR='this'`
 fundle plugin 'oh-my-fish/plugin-foreign-env'
-#fundle plugin 'jorgebucaran/replay.fish'
+# fundle plugin 'jorgebucaran/replay.fish'
 fundle plugin 'edc/bass'
 
 # todo(alice) it seems that pkg-keychain works well on macOS
@@ -36,18 +36,18 @@ fundle plugin 'edc/bass'
 # in and "that ought to be easy"
 # ssh agents
 fundle plugin 'danhper/fish-ssh-agent'
-#fundle plugin 'jitakirin/pkg-keychain'
-#set -U keychain_init_args --quiet --agents ssh id_rsa
+# fundle plugin 'jitakirin/pkg-keychain'
+# set -U keychain_init_args --quiet --agents ssh id_rsa
 
 # efficiency tools
 fundle plugin 'patrickf3139/Colored-Man-Pages'
-#fundle plugin 'tuvistavie/fish-fastdir'
+# fundle plugin 'tuvistavie/fish-fastdir'
 
 # development environment managers
 fundle plugin 'FabioAntunes/fish-nvm'
 fundle plugin 'oh-my-fish/plugin-pyenv'
 fundle plugin 'oh-my-fish/plugin-rustup'
-#fundle plugin 'oh-my-fish/plugin-rbenv'
+# fundle plugin 'oh-my-fish/plugin-rbenv'
 
 # OS specific aliases, etc.
 # fundle plugin 'oh-my-fish/plugin-osx'
@@ -56,10 +56,10 @@ fundle plugin 'oh-my-fish/plugin-rustup'
 # Utilities that aren't for everyone
 fundle plugin 'gazorby/fish-abbreviation-tips'
 fundle plugin 'decors/fish-source-highlight'
-#fundle plugin 'oh-my-fish/plugin-aws'
-fundle plugin 'halostatue/fish-docker'
-#fundle plugin 'vincentjames501/fish-kill-on-port'
-#fundle plugin 'tuvistavie/fish-watson'
+# fundle plugin 'oh-my-fish/plugin-aws'
+# fundle plugin 'halostatue/fish-docker'
+# fundle plugin 'vincentjames501/fish-kill-on-port'
+# fundle plugin 'tuvistavie/fish-watson'
 
 fundle init
 
