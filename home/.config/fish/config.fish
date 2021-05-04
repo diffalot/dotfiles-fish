@@ -63,6 +63,10 @@ fundle plugin 'decors/fish-source-highlight'
 
 fundle init
 
+# EDITOR
+ 
+set -U EDITOR nvim
+
 # PATH
 
 # add .bin to path
@@ -71,13 +75,7 @@ else
 	set -U fish_user_paths $fish_user_paths $HOME/bin
 end
 
-set -U EDITOR nvim
-
 # ALIASES
-
-# Use `miv` if you every really want to run vim
-alias miv=vim
-alias vim=nvim
 
 # Start or join the "0" tmux session
 alias session="tmux new-session -A -s 0"
