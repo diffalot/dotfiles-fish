@@ -82,17 +82,19 @@ alias vim=nvim
 # Start or join the "0" tmux session
 alias session="tmux new-session -A -s 0"
 
-# git convenience aliases
-alias wip="git commit -a -m wip"
-alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
+# useful git convenience aliases
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias oneline="git log --oneline master..."
+alias wip="git commit -a -m wip"
+alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
+
+# todo(alice): make "git wtf" a thing
 alias git-wtf="sleep 0.3; and echo \" Fetching all remotes....🚨
 \"; and sleep 0.5; and echo \"     💫 Don't worry! We'll have it sorted soon ✨
 \"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all"
 alias wtf=git-wtf
-# todo(alice): make "git wtf" a thing
 alias "git\ wtf"=wtf
+# alias git-last-commit-eats-previous-wip-commit-and-erases-the-wip-from-history="git reset --soft @~2; git commit -C @{1}"
 
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
