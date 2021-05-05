@@ -41,6 +41,8 @@ fundle plugin 'danhper/fish-ssh-agent'
 
 # efficiency tools
 fundle plugin 'patrickf3139/Colored-Man-Pages'
+fundle plugin 'jorgebucaran/fishtape'
+fundle plugin 'laughedelic/pisces'
 # fundle plugin 'tuvistavie/fish-fastdir'
 
 # development environment managers
@@ -70,9 +72,9 @@ set -U EDITOR nvim
 # PATH
 
 # add .bin to path
-if contains $HOME/bin $fish_user_paths
+if contains $HOME/.bin $fish_user_paths
 else
-	set -U fish_user_paths $fish_user_paths $HOME/bin
+	set -U fish_user_paths $fish_user_paths $HOME/.bin
 end
 
 # ALIASES
@@ -97,3 +99,6 @@ alias "git\ wtf"=wtf
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
+
+# jump
+status --is-interactive; and source (jump shell fish | psub)
