@@ -72,12 +72,14 @@ set -U EDITOR nvim
 # PATH
 
 # add .bin to path
-if contains $HOME/.bin $fish_user_paths
+if contains $HOME/bin $fish_user_paths
 else
 	set -U fish_user_paths $fish_user_paths $HOME/.bin
 end
 
 # ALIASES
+
+aliaz vim="nvim"
 
 alias roots="tree -aI '.git'"
 
