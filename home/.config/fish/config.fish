@@ -79,7 +79,7 @@ end
 
 # ALIASES
 
-aliaz vim="nvim"
+alias vim="nvim"
 
 alias roots="tree -aI '.git'"
 
