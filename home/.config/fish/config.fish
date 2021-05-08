@@ -65,15 +65,21 @@ fundle plugin 'vincentjames501/fish-kill-on-port'
 fundle init
 
 # EDITOR
- 
+
 set -U EDITOR nvim
 
 # PATH
 
 # add .bin to path
-if contains $HOME/.bin $fish_user_paths
+if contains $HOME/bin $fish_user_paths
 else
 	set -U fish_user_paths $fish_user_paths $HOME/.bin
+end
+
+# FUNCTIONS
+
+function roots
+    tree -a -I "\.git|node_modules|\.next" $args
 end
 
 # ALIASES
@@ -84,22 +90,31 @@ alias vim="nvim"
 alias session="tmux new-session -A -s 0"
 
 # useful git convenience aliases
+alias yo="git fetch --all && tig --all"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias oneline="git log --oneline master..."
 alias wip="git commit -a -m wip"
 alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
 
 # todo(alice): make "git wtf" a thing
-alias git-wtf="sleep 0.3; and echo \" Fetching all remotes....🚨
-\"; and sleep 0.5; and echo \"     💫 Don't worry! We'll have it sorted soon ✨
-\"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all"
-alias wtf=git-wtf
-alias "git\ wtf"=wtf
-# alias git-last-commit-eats-previous-wip-commit-and-erases-the-wip-from-history="git reset --soft @~2; git commit -C @{1}"
+#alias git-wtf="sleep 0.3; and echo \" Fetching all remotes....🚨
+#\"; and sleep 0.5; and echo \"     💫 Don't worry! We'll have it sorted soon ✨
+#\"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all"
+
+#alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"git reset --soft @~2; git commit -C @{1}"
 
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
+
+# homebrew shell completion
+if test -d (brew --prefix)"/share/fish/completions"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+end
 
 # perl
 set -x PATH /Users/alice/perl5/bin $PATH ^/dev/null;
@@ -110,10 +125,5 @@ set -q PERL_LOCAL_LIB_ROOT; or set -x PERL_LOCAL_LIB_ROOT /Users/alice/perl5;
 set -x PERL_MB_OPT --install_base\ \"/Users/alice/perl5\";
 set -x PERL_MM_OPT INSTALL_BASE=/Users/alice/perl5;
 
-# fzf.vim wishes I were using bash
-function fzf; command fzf $argv; end
-function rg; command rg $argv; end
-
 # jump
 status --is-interactive; and source (jump shell fish | psub)
-
