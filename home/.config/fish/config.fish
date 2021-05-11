@@ -12,7 +12,7 @@ fundle plugin 'oh-my-fish/theme-edan'
 # fundle plugin 'oh-my-fish/theme-scorphish'
 # fundle plugin 'AdamChristiansen/vertical-fish'
 # fundle plugin 'hauleth/agnoster'
-
+#
 # use nerd font themeing
 set -g theme_nerd_fonts yes
 
@@ -23,8 +23,8 @@ fundle plugin 'tuvistavie/oh-my-fish-core'
 
 # bash script and environment compatability wrappers. AFAIK these all let you
 # `replay source <file>` and `replay export VAR='this'`
-fundle plugin 'oh-my-fish/plugin-foreign-env'
 # fundle plugin 'jorgebucaran/replay.fish'
+fundle plugin 'oh-my-fish/plugin-foreign-env'
 fundle plugin 'edc/bass'
 
 # todo(alice) it seems that pkg-keychain works well on macOS
@@ -40,23 +40,24 @@ fundle plugin 'danhper/fish-ssh-agent'
 fundle plugin 'patrickf3139/Colored-Man-Pages'
 fundle plugin 'jorgebucaran/fishtape'
 # fundle plugin 'tuvistavie/fish-fastdir'
+fundle plugin 'jorgebucaran/autopair.fish'
 
 # development environment managers
 fundle plugin 'FabioAntunes/fish-nvm'
 fundle plugin 'oh-my-fish/plugin-pyenv'
 fundle plugin 'oh-my-fish/plugin-rustup'
 # fundle plugin 'oh-my-fish/plugin-rbenv'
-
-# OS specific aliases, etc.
+#
+# OS specific aliases, `etc.
 # fundle plugin 'oh-my-fish/plugin-osx'
 # fundle plugin 'oh-my-fish/plugin-archlinux'
 
 # Utilities that aren't for everyone
 fundle plugin 'gazorby/fish-abbreviation-tips'
 fundle plugin 'decors/fish-source-highlight'
-# fundle plugin 'oh-my-fish/plugin-aws'
+fundle plugin 'oh-my-fish/plugin-aws'
+fundle plugin 'vincentjames501/fish-kill-on-port'
 # fundle plugin 'halostatue/fish-docker'
-# fundle plugin 'vincentjames501/fish-kill-on-port'
 # fundle plugin 'tuvistavie/fish-watson'
 
 fundle init
@@ -75,9 +76,9 @@ end
 
 # ALIASES
 
-#alias vim="nvim"
+alias vim="nvim"
 
-alias roots="tree -aI '.git'"
+alias roots="tree -aI '.git|node_modules|.next|.DS_Store'"
 
 # Start or join the "0" tmux session
 alias session="tmux new-session -A -s 0"
@@ -115,5 +116,19 @@ set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
 
+# perl
+set -x PATH /Users/alice/perl5/bin $PATH ^/dev/null;
+set -q PERL5LIB; and set -x PERL5LIB /Users/alice/perl5/lib/perl5:$PERL5LIB;
+set -q PERL5LIB; or set -x PERL5LIB /Users/alice/perl5/lib/perl5;
+set -q PERL_LOCAL_LIB_ROOT; and set -x PERL_LOCAL_LIB_ROOT /Users/alice/perl5:$PERL_LOCAL_LIB_ROOT;
+set -q PERL_LOCAL_LIB_ROOT; or set -x PERL_LOCAL_LIB_ROOT /Users/alice/perl5;
+set -x PERL_MB_OPT --install_base\ \"/Users/alice/perl5\";
+set -x PERL_MM_OPT INSTALL_BASE=/Users/alice/perl5;
+
+# fzf.vim wishes I were using bash
+function fzf; command fzf $argv; end
+function rg; command rg $argv; end
+
 # jump
 status --is-interactive; and source (jump shell fish | psub)
+
