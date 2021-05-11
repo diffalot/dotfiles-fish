@@ -4,16 +4,13 @@
 fundle plugin 'smh/base16-shell-fish'
 
 # Prompts
-fundle plugin 'pure-fish/pure'
+#fundle plugin 'pure-fish/pure'
+# fundle plugin 'oh-my-fish/theme-bobthefish'
+fundle plugin 'oh-my-fish/theme-edan'
+# fundle plugin 'metrofish/metrofish'
+# fundle plugin 'jorgebucaran/hydro'
 # fundle plugin 'oh-my-fish/theme-scorphish'
 # fundle plugin 'AdamChristiansen/vertical-fish'
-# fundle plugin 'oh-my-fish/theme-bobthefish'
-# fundle plugin 'oh-my-fish/theme-edan'
-# fundle plugin 'metrofish/metrofish'
-# fundle plugin 'rodrigobdz/mooji'
-# fundle plugin 'h-matsuo/fish-theme-productive'
-# fundle plugin 'jorgebucaran/hydro'
-# fundle plugin 'jorgebucaran/gitio.fish'
 # fundle plugin 'hauleth/agnoster'
 
 # use nerd font themeing
@@ -42,7 +39,6 @@ fundle plugin 'danhper/fish-ssh-agent'
 # efficiency tools
 fundle plugin 'patrickf3139/Colored-Man-Pages'
 fundle plugin 'jorgebucaran/fishtape'
-fundle plugin 'laughedelic/pisces'
 # fundle plugin 'tuvistavie/fish-fastdir'
 
 # development environment managers
@@ -72,12 +68,14 @@ set -U EDITOR nvim
 # PATH
 
 # add .bin to path
-if contains $HOME/.bin $fish_user_paths
+if contains $HOME/bin $fish_user_paths
 else
-	set -U fish_user_paths $fish_user_paths $HOME/.bin
+  set -U fish_user_paths $fish_user_paths $HOME/bin
 end
 
 # ALIASES
+
+#alias vim="nvim"
 
 alias roots="tree -aI '.git'"
 
@@ -87,19 +85,20 @@ alias session="tmux new-session -A -s 0"
 # useful git convenience aliases
 alias yo="git fetch --all && tig --all"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
-alias oneline="git log --oneline master..."
+alias oneline="git log --oneline main..."
 alias wip="git commit -a -m wip"
-alias amend="git commit -a --amend -m (git log --oneline --format=%B -n 1 HEAD | head -n 1)"
+# todo:(alice) alias amend="git commit --amend -m (git log --format=%B -n 1 HEAD)"
 
 # todo(alice): make "git wtf" a thing
 #alias git-wtf="sleep 0.3; and echo \" Fetching all remotes....🚨
 #\"; and sleep 0.5; and echo \"     💫 Don't worry! We'll have it sorted soon ✨
 #\"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all"
 #alias wtf=git-wtf
-alias "git\ wtf"=wtf
 
 #alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"git reset --soft @~2; git commit -C @{1}"
 
+# homebrew openjdk
+set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
