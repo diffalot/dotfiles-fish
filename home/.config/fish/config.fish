@@ -97,6 +97,17 @@ alias wip="git commit -a -m wip"
 
 #alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"git reset --soft @~2; git commit -C @{1}"
 
+# fun git graphs
+function git-fetch-river 
+  cd 
+  git fetch --all
+  git log-tree
+end
+function homeshick-river 
+  homeshick cd dotfiles-
+  git-fetch-river ./
+end
+
 # homebrew openjdk
 set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
