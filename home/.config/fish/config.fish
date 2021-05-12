@@ -33,7 +33,7 @@ end
 alias vim="nvim"
 
 # Start or join the "0" tmux session
-alias session="tmux new-session -A -s 0"i
+alias session="tmux new-session -A -s 0"
 
 # useful git convenience aliases
 alias yo="git fetch --all && tig --all"
