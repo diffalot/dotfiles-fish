@@ -29,6 +29,37 @@ function homeshick-river
   git-fetch-river ./
 end
 
+# stash functions that use a number, just a number
+function stash-list
+  echo
+  git stash list
+# and some are in here just for consistency
+end
+function stash-show -a num
+  echo
+  echo Here is the patch from stash@\{$num\}\:
+  git stash show -p stash@\{$num\}
+  echo
+end
+function stash-apply -a num
+  echo
+  echo We are applying stash@\{$num\}
+  stash-show $num
+  echo
+  git stash pop stash@\{$num\}
+end
+function stash-drop --argument num
+  echo
+  echo We are dropping stash@\{$num\}
+  stash-show $num
+  git stash drop stash@\{$num\}
+end
+function stash-diff-to -a num
+  echo
+  echo Here is the diff from your HEAD to stash@\{$num\}\:
+  git diff stash@\{$num\}
+end
+
 # ALIASES
 alias vim="nvim"
 
@@ -62,9 +93,7 @@ status --is-interactive; and source (jump shell fish | psub)
 # OS Specific Inclusions
 switch (uname)
 case Linux
-  echo Hi Tux!
 case Darwin
-  echo Hi Hexley!
 
   # I think this is gonna only be on my macOS machines
   fundle plugin 'oh-my-fish/plugin-aws'
