@@ -29,6 +29,14 @@ function homeshick-river
   git-fetch-river ./
 end
 
+function buildAndInstallNeovim
+  cd ~/build/neovim
+  and git checkout master; and git pull;
+  and make distclean; and make CMAKE_BUILD_TYPE=Release;
+  and sudo make install
+  and cd -
+end
+
 # stash functions that use a number, just a number
 function stash-list
   echo
