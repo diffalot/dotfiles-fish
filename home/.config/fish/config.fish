@@ -72,7 +72,7 @@ end
 alias vim="nvim"
 
 # Start or join the "0" tmux session
-alias session="tmux new-session -A -s 0"
+alias session="tmux new-session -A -s '☡'"
 
 # useful git convenience aliases
 alias yo="git fetch --all && tig --all"
@@ -101,6 +101,7 @@ status --is-interactive; and source (jump shell fish | psub)
 # OS Specific Inclusions
 switch (uname)
 case Linux
+case FreeBSD NetBSD DragonFly
 case Darwin
 
   # I think this is gonna only be on my macOS machines
@@ -125,10 +126,8 @@ case Darwin
   set -q PERL_LOCAL_LIB_ROOT; or set -x PERL_LOCAL_LIB_ROOT /Users/alice/perl5;
   set -x PERL_MB_OPT --install_base\ \"/Users/alice/perl5\";
   set -x PERL_MM_OPT INSTALL_BASE=/Users/alice/perl5;
-case FreeBSD NetBSD DragonFly
-  echo Hi Beastie!
+
 case '*'
-  echo Hi, stranger!
 end
 
 # fundle plugins
@@ -136,18 +135,19 @@ end
 # colorschemes
 fundle plugin 'smh/base16-shell-fish'
 
+# use nerd font themeing
+set -g theme_nerd_fonts yes
+
 # Prompts
-#fundle plugin 'pure-fish/pure'
+fundle plugin 'diffalot/hydro'
+# fundle plugin 'pure-fish/pure'
 # fundle plugin 'oh-my-fish/theme-bobthefish'
-fundle plugin 'oh-my-fish/theme-edan'
+# fundle plugin 'oh-my-fish/theme-edan'
 # fundle plugin 'metrofish/metrofish'
 # fundle plugin 'jorgebucaran/hydro'
 # fundle plugin 'oh-my-fish/theme-scorphish'
 # fundle plugin 'AdamChristiansen/vertical-fish'
 # fundle plugin 'hauleth/agnoster'
-#
-# use nerd font themeing
-set -g theme_nerd_fonts yes
 
 # utilities other scripts depend on
 fundle plugin 'tuvistavie/fish-completion-helpers'
