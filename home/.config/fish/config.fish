@@ -18,7 +18,7 @@ end
 # fetch all remotes after changing directories
 # into a repository then print a pretty graph
 function git-fetch-river
-  cd 
+  cd $args
   git fetch --all
   git log-tree
 end
@@ -89,7 +89,8 @@ alias wip="git commit -a -m wip"
 
 # todo(alice) validate the ask function with fishtape tests then make it ask
 # twice before your current commit can eat it's parent.
-# alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"git reset --soft @~2; git commit -C @{1}"
+# alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"
+alias git-eat-parent "git reset --soft @~2; git commit -C @{1}"
 
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
