@@ -1,0 +1,9 @@
+abbr -a -U -- - 'cd -'
+abbr -a -U -- cfish 'cd ~/.homesick/repos/dotfiles-fish/home/.config/fish; and nvim config.fish; and cd -'
+abbr -a -U -- cnvim 'nvim -c ManageNvimConfig -c tabonly'
+abbr -a -U -- gfish 'cd ~/.homesick/repos/dotfiles-fish/home/.config/fish'
+abbr -a -U -- gnvim 'cd ~/.homesick/repos/dotfiles-nvim/home/.config/nvim/'
+abbr -a -U -- italics bash\ -c\ echo\ -e\ \"\\x1b\[3m\ Hello,\ I\ should\ be\ italicized.\"
+abbr -a -U -- lsp-tail-log 'tail -f ~/.cache/nvim/lsp.log'
+abbr -a -U -- my-neovim 'env VIMRUNTIME=runtime ~/build/neovim/build/bin/nvim'
+abbr -a -U -- sagu 'sudo apt-get update && sudo apt-get upgrade -y'

@@ -133,14 +133,16 @@ end
 
 # fundle plugins
 
+# Prompts
+
 # colorschemes
 fundle plugin 'smh/base16-shell-fish'
-
 # use nerd font themeing
 set -g theme_nerd_fonts yes
+fundle plugin 'acomagu/fish-async-prompt'
 
-# Prompts
-fundle plugin 'diffalot/hydro'
+fundle plugin 'diffalot/pure'
+
 # fundle plugin 'pure-fish/pure'
 # fundle plugin 'oh-my-fish/theme-bobthefish'
 # fundle plugin 'oh-my-fish/theme-edan'
@@ -188,7 +190,7 @@ fundle plugin 'oh-my-fish/plugin-rustup'
 
 # Utilities that aren't for everyone
 fundle plugin 'gazorby/fish-abbreviation-tips'
-fundle plugin 'decors/fish-source-highlight'
+#Could be causeing the oddities I 'm seeing with `less` fundle plugin 'decors/fish-source-highlight'
 # fundle plugin 'oh-my-fish/plugin-aws'
 fundle plugin 'vincentjames501/fish-kill-on-port'
 # fundle plugin 'halostatue/fish-docker'
