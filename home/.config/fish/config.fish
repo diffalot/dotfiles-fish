@@ -105,9 +105,6 @@ case Linux
 case FreeBSD NetBSD DragonFly
 case Darwin
 
-  # I think this is gonna only be on my macOS machines
-  fundle plugin 'oh-my-fish/plugin-aws'
-
   # homebrew openjdk
   set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
 
