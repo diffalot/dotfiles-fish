@@ -37,7 +37,7 @@ function buildAndInstallNeovim
   and cd -
 end
 
-# stash functions that use a number, just a number
+# git stash functions that use a number, just a number
 function stash-list
   echo
   git stash list
