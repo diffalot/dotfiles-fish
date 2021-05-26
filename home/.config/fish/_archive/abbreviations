@@ -1,6 +1,7 @@
 abbr -a -U -- - 'cd -'
 abbr -a -U -- cfish 'cd ~/.homesick/repos/dotfiles-fish/home/.config/fish; and nvim config.fish; and cd -'
 abbr -a -U -- cnvim 'nvim -c ManageNvimConfig -c tabonly'
+abbr -a -U -- gcam 'git commit -a -m \"[]()\"'
 abbr -a -U -- gfish 'cd ~/.homesick/repos/dotfiles-fish/home/.config/fish'
 abbr -a -U -- gnvim 'cd ~/.homesick/repos/dotfiles-nvim/home/.config/nvim/'
 abbr -a -U -- italics bash\ -c\ echo\ -e\ \"\\x1b\[3m\ Hello,\ I\ should\ be\ italicized.\"

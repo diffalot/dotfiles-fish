@@ -1,0 +1,67 @@
+# fundle plugins
+
+# Prompts
+
+# colorschemes
+fundle plugin 'smh/base16-shell-fish'
+# use nerd font themeing
+set -g theme_nerd_fonts yes
+fundle plugin 'acomagu/fish-async-prompt'
+
+fundle plugin 'diffalot/pure'
+
+# fundle plugin 'pure-fish/pure'
+# fundle plugin 'oh-my-fish/theme-bobthefish'
+# fundle plugin 'oh-my-fish/theme-edan'
+# fundle plugin 'metrofish/metrofish'
+# fundle plugin 'jorgebucaran/hydro'
+# fundle plugin 'oh-my-fish/theme-scorphish'
+# fundle plugin 'AdamChristiansen/vertical-fish'
+# fundle plugin 'hauleth/agnoster'
+
+# utilities other scripts depend on
+fundle plugin 'tuvistavie/fish-completion-helpers'
+fundle plugin 'oh-my-fish/plugin-config'
+fundle plugin 'tuvistavie/oh-my-fish-core'
+
+# bash script and environment compatability wrappers. AFAIK these all let you
+# `replay source <file>` and `replay export VAR='this'`
+# fundle plugin 'jorgebucaran/replay.fish'
+fundle plugin 'oh-my-fish/plugin-foreign-env'
+fundle plugin 'edc/bass'
+
+# todo(alice) it seems that pkg-keychain works well on macOS
+# but not on Ubuntu??? surely I can fix that with dedicated time, eventually.
+# I with that fish-ssh-agent doesn't ask me for my pass as soon as I log
+# in and "that ought to be easy"
+# ssh agents
+fundle plugin 'danhper/fish-ssh-agent'
+# fundle plugin 'jitakirin/pkg-keychain'
+# set -U keychain_init_args --quiet --agents ssh id_rsa
+
+# efficiency tools
+fundle plugin 'patrickf3139/Colored-Man-Pages'
+fundle plugin 'jorgebucaran/fishtape'
+# fundle plugin 'tuvistavie/fish-fastdir'
+fundle plugin 'jorgebucaran/autopair.fish'
+
+# development environment managers
+fundle plugin 'FabioAntunes/fish-nvm'
+fundle plugin 'oh-my-fish/plugin-pyenv'
+fundle plugin 'oh-my-fish/plugin-rustup'
+# fundle plugin 'oh-my-fish/plugin-rbenv'
+#
+# OS specific aliases, `etc.
+# fundle plugin 'oh-my-fish/plugin-osx'
+# fundle plugin 'oh-my-fish/plugin-archlinux'
+
+# Utilities that aren't for everyone
+fundle plugin 'gazorby/fish-abbreviation-tips'
+#Could be causeing the oddities I 'm seeing with `less` fundle plugin 'decors/fish-source-highlight'
+# fundle plugin 'oh-my-fish/plugin-aws'
+fundle plugin 'vincentjames501/fish-kill-on-port'
+# fundle plugin 'halostatue/fish-docker'
+# fundle plugin 'tuvistavie/fish-watson'
+
+# finally initialize fundle
+fundle init
