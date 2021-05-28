@@ -106,6 +106,7 @@ alias session-start="ssh-add && tmux new-session -A -s '☡' \
         && tmux kill-session -t0 \
 "
 
+# TODO convert most aliases to abbreviations
 # useful git convenience aliases
 alias yo="git fetch --all && tig --all"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
@@ -130,6 +131,9 @@ source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
 
 # jump
 status --is-interactive; and source (jump shell fish | psub)
+
+# async prompt for pure
+set -g async_prompt_functions _pure_prompt_git
 
 # OS Specific Inclusions
 switch (uname)
