@@ -72,7 +72,7 @@ end
 alias vim="nvim"
 
 # Start or join the main tmux session and sync cronofiles
-alias session="ssh-add && tmux new-window -t '☡' \
+alias session="tmux new-window -t '☡' \
     ' \
     echo syncing cronofiles \
         && cronofiler /home/alice/cronofiles/ > /dev/null \
@@ -93,7 +93,7 @@ alias session="ssh-add && tmux new-window -t '☡' \
 # TODO figure out why session 0 always starts up \
 # alias must include a long running command to stay attached \
 
-alias session-start="ssh-add && tmux new-session -A -s '☡' \
+alias session-start="tmux new-session -A -s '☡' \
     ' \
     echo syncing cronofiles \
         && cronofiler $HOME/cronofiles/ > /dev/null \
