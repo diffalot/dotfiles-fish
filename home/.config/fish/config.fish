@@ -71,8 +71,40 @@ end
 # ALIASES
 alias vim="nvim"
 
-# Start or join the "0" tmux session
-alias session="tmux new-session -A -s '☡'"
+# Start or join the main tmux session and sync cronofiles
+alias session="ssh-add && tmux new-window -t '☡' \
+    ' \
+    echo syncing cronofiles \
+        && cronofiler /home/alice/cronofiles/ > /dev/null \
+        && echo '' \
+        \
+        && fish \
+    '; \
+    and tmux attach -t '☡' \
+        && echo syncing cronofiles \
+        && cronofiler /home/alice/cronofiles/ > /dev/null \
+        && echo '' \
+"
+
+# Start or join the main tmux session and sync cronofiles if the session is
+# being started. also, set files to sync when the session exits cleanly. As
+# a bonus, kill any session 0 that exists as the session starts and exits
+
+# TODO figure out why session 0 always starts up \
+# alias must include a long running command to stay attached \
+
+alias session-start="ssh-add && tmux new-session -A -s '☡' \
+    ' \
+    echo syncing cronofiles \
+        && cronofiler $HOME/cronofiles/ > /dev/null \
+        && echo '' \
+        && fish \
+    ' \
+    && echo syncing cronofiles \
+        && cronofiler $HOME/cronofiles/ > /dev/null \
+        && sleep 2 \
+        && tmux kill-session -t0 \
+"
 
 # useful git convenience aliases
 alias yo="git fetch --all && tig --all"
