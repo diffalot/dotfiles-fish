@@ -72,17 +72,17 @@ end
 alias vim="nvim"
 
 # Start or join the main tmux session and sync cronofiles
-alias session="ssh-add && tmux new-window -t '☡' \
+alias session="tmux new-window -t '☡' \
     ' \
     echo syncing cronofiles \
-        && cronofiler /home/alice/cronofiles/ > /dev/null \
+        && cronofiler $HOME/cronofiles/ > /dev/null \
         && echo '' \
         \
         && fish \
     '; \
     and tmux attach -t '☡' \
         && echo syncing cronofiles \
-        && cronofiler /home/alice/cronofiles/ > /dev/null \
+        && cronofiler $HOME/cronofiles/ > /dev/null \
         && echo '' \
 "
 
@@ -90,14 +90,16 @@ alias session="ssh-add && tmux new-window -t '☡' \
 # being started. also, set files to sync when the session exits cleanly. As
 # a bonus, kill any session 0 that exists as the session starts and exits
 
-# TODO figure out why session 0 always starts up \
 # alias must include a long running command to stay attached \
+#
+# TODO figure out why session 0 always starts up \
 
-alias session-start="ssh-add && tmux new-session -A -s '☡' \
+alias session-start="tmux new-session -A -s '☡' \
     ' \
     echo syncing cronofiles \
         && cronofiler $HOME/cronofiles/ > /dev/null \
         && echo '' \
+        && tmux kill-session -t0 \
         && fish \
     ' \
     && echo syncing cronofiles \
@@ -165,3 +167,5 @@ case '*'
 end
 
 set -g theme_nerd_fonts yes
+
+#starship init fish | source
