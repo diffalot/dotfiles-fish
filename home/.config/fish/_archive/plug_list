@@ -1,15 +1,6 @@
-acomagu/fish-async-prompt
-danhper/fish-ssh-agent
-edc/bass
 FabioAntunes/fish-nvm
-gazorby/fish-abbreviation-tips
-halostatue/fish-docker
-IlanCosman/tide
 jorgebucaran/autopair.fish
 jorgebucaran/fishtape
-kidonng/fish-plug
-local/cronofiler
-oh-my-fish/plugin-aws
 oh-my-fish/plugin-config
 oh-my-fish/plugin-foreign-env
 oh-my-fish/plugin-pyenv
@@ -18,4 +9,3 @@ patrickf3139/Colored-Man-Pages
 smh/base16-shell-fish
 tuvistavie/fish-completion-helpers
 tuvistavie/oh-my-fish-core
-vincentjames501/fish-kill-on-port
