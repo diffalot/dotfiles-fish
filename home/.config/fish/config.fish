@@ -5,14 +5,17 @@ else
   set -U fish_user_paths $fish_user_paths $HOME/bin
 end
 
+set -g theme_nerd_fonts yes
+
 # EDITOR
-set -U EDITOR nvim
+set -U EDITOR kak
+set -U VISUAL kak
 
 # FUNCTIONS
 # print out a directory tree without junk
 function roots
   # todo(alice) make this read from git ignore
-  tree -aI '.git|node_modules|.next|.DS_Store' $args
+  tree -aI '.git|node_modules|.next|.DS_Store' -- $argv
 end
 
 # fetch all remotes after changing directories
@@ -26,7 +29,7 @@ end
 # homeshick cd into a repo and print the graph
 function homeshick-river
   homeshick cd dotfiles-
-  git-fetch-river ./
+  git-fetch-river 
 end
 
 function buildAndInstallNeovim
@@ -69,44 +72,29 @@ function stash-diff-to -a num
 end
 
 # ALIASES
-alias vim="nvim"
+alias vim="kak"
+alias nvim="kak"
 
-# Start or join the main tmux session and sync cronofiles
+## Start or join the main tmux session and sync cronofiles
 alias session="tmux new-window -t '☡' \
-    ' \
-    echo syncing cronofiles \
-        && cronofiler $HOME/cronofiles/ > /dev/null \
+    ' \ echo
         && echo '' \
         \
         && fish \
     '; \
     and tmux attach -t '☡' \
-        && echo syncing cronofiles \
-        && cronofiler $HOME/cronofiles/ > /dev/null \
-        && echo '' \
+        && colorwheel \
 "
 
 # Start or join the main tmux session and sync cronofiles if the session is
 # being started. also, set files to sync when the session exits cleanly. As
 # a bonus, kill any session 0 that exists as the session starts and exits
-
+#
 # alias must include a long running command to stay attached \
 #
 # TODO figure out why session 0 always starts up \
-
-alias session-start="tmux new-session -A -s '☡' \
-    ' \
-    echo syncing cronofiles \
-        && cronofiler $HOME/cronofiles/ > /dev/null \
-        && echo '' \
-        && tmux kill-session -t0 \
-        && fish \
-    ' \
-    && echo syncing cronofiles \
-        && cronofiler $HOME/cronofiles/ > /dev/null \
-        && sleep 2 \
-        && tmux kill-session -t0 \
-"
+#
+alias session-start="tmux new-session -A -s '☡'"
 
 # TODO convert most aliases to abbreviations
 # useful git convenience aliases
@@ -151,7 +139,7 @@ case Darwin
       set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
   end
   if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+      set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish vendor_completions.d
   end
 
   # perl
@@ -166,6 +154,10 @@ case Darwin
 case '*'
 end
 
-set -g theme_nerd_fonts yes
+if tput cols > 74 
+else
+end
 
-#starship init fish | source
+#colorwheel
+
+fish_vi_key_bindings
