@@ -13,7 +13,7 @@ set -U VISUAL kak
 
 # FUNCTIONS
 # print out a directory tree without junk
-function roots
+function root
   # todo(alice) make this read from git ignore
   tree -aI '.git|node_modules|.next|.DS_Store' -- $argv
 end
@@ -73,7 +73,7 @@ end
 
 # ALIASES
 alias vim="kak"
-alias nvim="kak"
+alias nvim="nvim"
 
 ## Start or join the main tmux session and sync cronofiles
 alias session="tmux new-window -t '☡' \
