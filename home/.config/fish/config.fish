@@ -8,8 +8,8 @@ end
 set -g theme_nerd_fonts yes
 
 # EDITOR
-set -U EDITOR kak
-set -U VISUAL kak
+set -U EDITOR nvim
+set -U VISUAL nvim
 
 # FUNCTIONS
 # print out a directory tree without junk
@@ -21,13 +21,13 @@ end
 # fetch all remotes after changing directories
 # into a repository then print a pretty graph
 function git-fetch-river
-  cd $args
+  cd $argv[0]
   git fetch --all
-  git log-tree
+  git log-tree $argv
 end
 
 # homeshick cd into a repo and print the graph
-function homeshick-river
+function homeshick-river 
   homeshick cd dotfiles-
   git-fetch-river 
 end
@@ -68,52 +68,40 @@ end
 function stash-diff-to -a num
   echo
   echo Here is the diff from your HEAD to stash@\{$num\}\:
-  git diff stash@\{$num\}
+  git diff HEAD stash@\{$num\}
 end
 
+#alias amend="git commit --amend -m (lastlog)"
+function amend
+  set -l my_name (git config user.name)
+  set -l my_email (git config user.email)
+
+  set -l previous_author (git log -n 1 --format="%aN %aE")
+  if test "$previous_author" != "$my_name $my_email"
+    set_color red --bold
+    echo "Take a break... You just tried to amend a commit by" (git log -n 1 --format=%aN) '.'
+    set_color normal
+  else
+    set -l lastcommit (git log -n 1 --format="%H")
+    git commit --amend --reuse-message=$lastcommit
+  end
+end
+
+
 # ALIASES
-alias vim="kak"
+alias vim="nvim"
 alias nvim="nvim"
+alias less="bat --italic-text always --theme base16"
 
-## Start or join the main tmux session and sync cronofiles
-alias session="tmux new-window -t '☡' \
-    ' \ echo
-        && echo '' \
-        \
-        && fish \
-    '; \
-    and tmux attach -t '☡' \
-        && colorwheel \
-"
-
-# Start or join the main tmux session and sync cronofiles if the session is
-# being started. also, set files to sync when the session exits cleanly. As
-# a bonus, kill any session 0 that exists as the session starts and exits
-#
-# alias must include a long running command to stay attached \
-#
-# TODO figure out why session 0 always starts up \
-#
-alias session-start="tmux new-session -A -s '☡'"
-
-# TODO convert most aliases to abbreviations
+# convert most aliases to abbreviations
+# but some are too important to be easy to edit
 # useful git convenience aliases
-alias yo="git fetch --all && tig --all"
-alias undo="git reset --soft HEAD~1 && git reset HEAD ."
-alias oneline="git log --oneline main..."
 alias wip="git commit -a -m wip"
-# todo:(alice) fix amend
-# alias amend="git commit --amend -m (git log --format=%B -n 1 HEAD)"
-
-# todo(alice): make "git wtf" a thing
-# alias git-wtf="sleep 0.3; and echo \" Fetching all remotes....🚨
-# \"; and sleep 0.5; and echo \"     💫 Don't worry! We'll have it sorted soon ✨
-# \"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all"
-
-# todo(alice) validate the ask function with fishtape tests then make it ask
-# twice before your current commit can eat it's parent.
-# alias git-kirby="source $HOME/.bin/_library; ask_with_a_no_default echo('Are you sure you want to rewrite history? ``'; and echo not today" #"
+alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias git-eat-parent "git reset --soft @~2; git commit -C @{1}"
+alias git-wtf='sleep 0.3; and echo " Fetching all remotes....🚨 \
+"; and sleep 0.5; and echo "     💫 Don\'t worry! We\'ll have it sorted soon ✨
+"; and sleep 1.25; and git fetch --all > /dev/null; and tig --all'
 
 # homeshick dotfile management
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
