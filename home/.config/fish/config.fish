@@ -40,6 +40,16 @@ function buildAndInstallNeovim
   and cd -
 end
 
+function buildAndInstallFishShell
+  cd ~/build/fish-shell
+  and git checkout master; and git pull;
+  and mkdir -p build; and cd build;
+  and make clean;
+  and cmake ..
+  and make;
+  and sudo make install
+  and cd -
+end
 # git stash functions that use a number, just a number
 function stash-list
   echo
@@ -62,10 +72,10 @@ end
 function stash-drop --argument num
   echo
   echo We are dropping stash@\{$num\}
-  stash-show $num
   git stash drop stash@\{$num\}
 end
 function stash-diff-to -a num
+  # TODO: this is either broken or doesn't look like I thought it would
   echo
   echo Here is the diff from your HEAD to stash@\{$num\}\:
   git diff HEAD stash@\{$num\}
@@ -96,7 +106,7 @@ alias less="bat --italic-text always --theme base16"
 # convert most aliases to abbreviations
 # but some are too important to be easy to edit
 # useful git convenience aliases
-alias wip="git commit -a -m wip"
+alias wip="git commit -m wip"
 alias undo="git reset --soft HEAD~1 && git reset HEAD ."
 alias git-eat-parent "git reset --soft @~2; git commit -C @{1}"
 alias git-wtf='sleep 0.3; and echo " Fetching all remotes....🚨 \
