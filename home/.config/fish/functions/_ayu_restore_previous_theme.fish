@@ -1,0 +1,33 @@
+function _ayu_restore_previous_theme
+	set --universal fish_color_autosuggestion A37ACC
+	set --universal fish_color_cancel -r
+	set --universal fish_color_command 575F66
+	set --universal fish_color_comment 575F66
+	set --universal fish_color_cwd 399EE6
+	set --universal fish_color_cwd_root red
+	set --universal fish_color_end ED9366
+	set --universal fish_color_error F51818
+	set --universal fish_color_escape 4CBF99
+	set --universal fish_color_hg_added green
+	set --universal fish_color_hg_clean green
+	set --universal fish_color_hg_copied magenta
+	set --universal fish_color_hg_deleted red
+	set --universal fish_color_hg_dirty red
+	set --universal fish_color_hg_modified yellow
+	set --universal fish_color_hg_renamed magenta
+	set --universal fish_color_hg_unmerged red
+	set --universal fish_color_hg_untracked yellow
+	set --universal fish_color_history_current --bold
+	set --universal fish_color_host normal
+	set --universal fish_color_host_remote FFEE99
+	set --universal fish_color_match F07171
+	set --universal fish_color_normal 575F66
+	set --universal fish_color_operator FF9940
+	set --universal fish_color_param A37ACC
+	set --universal fish_color_quote ED9366
+	set --universal fish_color_redirection A37ACC
+	set --universal fish_color_search_match --background=FF9940
+	set --universal fish_color_selection --background=FF9940
+	set --universal fish_color_user brgreen
+	set --universal fish_color_valid_path --underline
+end

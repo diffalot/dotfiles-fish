@@ -1,0 +1,67 @@
+#!/usr/bin/env fish
+
+_hex_is_hex_number
+    #is this a real hex number:
+    # are the first two characters 0x???
+    # can we do math with everythign but the first 2 characters that is equal to `math` doing math with the whole thing 
+end
+
+_hex_is_hex_string
+    # does it only have characters that belong in a hex number
+    #can we do math with the whole string as if it were a hex number
+end
+
+_hex_ensure hex
+#only for 2 to 3 character hex numbers allowed
+    2-3 if no 0x at the beginning
+    4-5 if it is a true hex number
+end
+
+
+_hex_list_item -a list hex
+    set -l hex _hex_ensure hex
+
+    return list[dec1]
+end
+
+
+function _font16_set_variables
+
+    argparse o/overwrite g/global
+
+set -l ansi16 = black   red       green   yellow
+                blue    magenta   cyan    white
+                brblack brred     brgreen bryellow
+                brblue  brmagenta brcyan  brwhite
+
+end
+
+function font16_lookup_font
+end
+
+function font_party -a hex
+    
+end
+
+function _f
+    echo status stack-trace
+    font_party $argv
+end
+
+function _f_log_argv 
+    for a in $argv
+        printf "%b\n" $a
+    end
+end
+
+function f1
+    #f1 is always red
+    #the args will contain font info
+    _f_log_argv $argv
+    set argv red $argv
+    _f_log_argv $argv
+    _f $argv
+end
+
+
+
