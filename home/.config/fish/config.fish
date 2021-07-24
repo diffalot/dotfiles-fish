@@ -163,9 +163,6 @@ alias git-wtf='sleep 0.3; and echo " Fetching all remotes....🚨 \
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick.fish"
 
-# jump
-status --is-interactive; and source (jump shell fish | psub)
-
 # async prompt for pure
 set -g async_prompt_functions _pure_prompt_git
 
@@ -174,6 +171,9 @@ switch (uname)
     case Linux
     case FreeBSD NetBSD DragonFly
     case Darwin
+
+    # jump
+    status --is-interactive; and source (jump shell fish | psub)
 
     # homebrew openjdk
     set -g fish_user_paths "/usr/local/opt/openjdk/bin" $fish_user_paths
