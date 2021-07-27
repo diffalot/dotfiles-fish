@@ -15,6 +15,7 @@ abbr -a -U -- italics bash\ -c\ echo\ -e\ \"\\x1b\[3m\ Hello,\ I\ should\ be\ it
 abbr -a -U -- lastlog 'git log --format=%B -n 1 HEAD'
 abbr -a -U -- lsp-tail-log 'tail -f ~/.cache/nvim/lsp.log'
 abbr -a -U -- my-neovim 'env VIMRUNTIME=runtime ~/build/neovim/build/bin/nvim'
+abbr -a -U -- oneline 'git log --pretty=oneline'
 abbr -a -U -- onelongline 'git log --oneline --root'
 abbr -a -U -- sagu 'sudo apt-get update && sudo apt-get upgrade -y'
 abbr -a -U -- scheme ayu_display_colorscheme
