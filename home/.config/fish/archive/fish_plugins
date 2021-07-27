@@ -1,3 +1,5 @@
+/Users/alice/.homesick/repos/dotfiles-fish/home/.config/fish/_archive/fish_plugins
+jorgebucaran/fisher
 FabioAntunes/fish-nvm
 jorgebucaran/autopair.fish
 jorgebucaran/fishtape
@@ -6,6 +8,9 @@ oh-my-fish/plugin-foreign-env
 oh-my-fish/plugin-pyenv
 oh-my-fish/plugin-rustup
 patrickf3139/Colored-Man-Pages
-smh/base16-shell-fish
 tuvistavie/fish-completion-helpers
 tuvistavie/oh-my-fish-core
+edc/bass
+rodrigobdz/mooji
+mwilliammyers/starship
+PatrickF1/fzf.fish
