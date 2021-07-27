@@ -11,7 +11,9 @@ set -U VISUAL nvim
 # ALIASES
 alias vim="nvim"
 #alias nvim="nvim"
-alias less="bat"
+alias batshit="bat"
+alias more="bat"
+alias less="more"
 alias ls="lsd"
 alias random-colors="echo --reverse (random choice (set_color --print-colors))"
 
