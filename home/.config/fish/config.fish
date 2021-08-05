@@ -200,10 +200,6 @@ switch (uname)
     case '*'
 end
 
-if tput cols > 74
-else
-end
-
 #if test -n "$TMUX"
 #    set -lx NVIM_LISTEN_ADDRESS (tmux show-environment NVIM_LISTEN_ADDRESS | sed -r 's/NVIM_LISTEN_ADDRESS=//')
 #    if not test -S "$NVIM_LISTEN_ADDRESS"
